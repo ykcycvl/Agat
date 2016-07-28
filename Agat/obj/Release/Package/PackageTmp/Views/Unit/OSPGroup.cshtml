@@ -1,0 +1,42 @@
+﻿@model Agat.Models.OSPGroupViewModel
+@{
+    ViewBag.Title = "Группы ОСП";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Группы ОСП</h2>
+
+<div class="row">
+    <blockquote>
+        <p><small>Для редактирования группы ОСП нажмите на ее название</small></p>
+        <p>@Html.ActionLink("Добавить", "AddOSPGroup", "Unit", new { @class = "btn btn-default" })</p>
+    </blockquote>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Название
+            </th>
+            <th>
+                Руководитель
+            </th>
+        </tr>
+        @foreach (var gosp in Model.ospgroups)
+        {
+            <tr>
+                <td>@gosp.id.ToString()</td>
+                <td>@gosp.name</td>
+                @if (@gosp.employee != null)
+                {
+                    <td>@gosp.employee.lastname @gosp.employee.firstname @gosp.employee.middlename</td>
+                }
+                else
+                {
+                    <td>-</td>
+                }
+            </tr>
+        }
+    </table>
+</div>

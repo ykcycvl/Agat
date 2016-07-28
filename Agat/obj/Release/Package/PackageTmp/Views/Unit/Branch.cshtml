@@ -1,0 +1,34 @@
+﻿@model Agat.Models.BranchViewModel
+@{
+    ViewBag.Title = "Филиалы";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Филиалы</h2>
+<div class="row">
+    <blockquote>
+        <p><small>Для редактирования филиала кликните по его полному либо краткому наименованию</small></p>
+        <p>@Html.ActionLink("Добавить", "AddBranch", "Unit", new { @class = "btn btn-default" })</p>
+    </blockquote>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Полное наименование
+            </th>
+            <th>
+                Краткое наименование
+            </th>
+        </tr>
+        @foreach (var branch in Model.branches)
+        {
+            <tr>
+                <td>@branch.id.ToString()</td>
+                <td>@Html.ActionLink(branch.full_name, "EditBranch", new { @id=branch.id })</td>
+                <td>@Html.ActionLink(branch.short_name, "EditBranch", new { @id = branch.id })</td>
+            </tr>
+        }
+    </table>
+</div>

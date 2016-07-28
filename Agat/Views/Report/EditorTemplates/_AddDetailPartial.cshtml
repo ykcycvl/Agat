@@ -1,0 +1,40 @@
+﻿@model Agat.Models.EditReportViewModel.Detail
+
+<div id="newReportDetail">
+    <form role="form" class="" method="post" action="@Url.Action("AddDetail", "Report")">
+        <div class="form-group">
+            @Html.LabelFor(model => model.product_id, htmlAttributes: new { @class = "control-label col-md-5", @name = "detail_product_id" })
+            @Html.DropDownListFor(model => model.product_id, new SelectList(Model.Products, "Value", "Text"), "Выберите продукт", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.product_id, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.new_amt, htmlAttributes: new { @class = "control-label col-md-5" })
+            @Html.EditorFor(model => model.new_amt, new { htmlAttributes = new { @class = "form-control", @name = "detail_new_amt" } })
+            @Html.ValidationMessageFor(model => model.new_amt, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.new_sum, htmlAttributes: new { @class = "control-label col-md-5" })
+            @Html.EditorFor(model => model.new_sum, new { htmlAttributes = new { @class = "form-control", @name = "detail_new_sum" } })
+            @Html.ValidationMessageFor(model => model.new_sum, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.old_amt, htmlAttributes: new { @class = "control-label col-md-5" })
+            @Html.EditorFor(model => model.old_amt, new { htmlAttributes = new { @class = "form-control", @name = "detail_old_amt" } })
+            @Html.ValidationMessageFor(model => model.old_amt, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.old_sum, htmlAttributes: new { @class = "control-label col-md-5" })
+            @Html.EditorFor(model => model.old_sum, new { htmlAttributes = new { @class = "form-control", @name = "detail_old_sum" } })
+            @Html.ValidationMessageFor(model => model.old_sum, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Добавить" class="btn btn-primary" />
+            <a href="#" class="btn btn-warning" id="closeDialogBtn">Отмена</a>
+        </div>
+    </form>
+</div>

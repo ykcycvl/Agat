@@ -1,0 +1,764 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="agatModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="branch">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="short_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="SKK" Relationship="Self.FK__SKK__branch_id__1CF15040" FromRole="branch" ToRole="SKK" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lastname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="middlename" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="3" />
+    <Property Name="DOD" Type="DateTime" Precision="3" />
+    <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="position_id" Type="Int32" Nullable="false" />
+    <Property Name="category" Type="Byte" Nullable="false" />
+    <Property Name="pos_id" Type="Int32" />
+    <Property Name="chief_id" Type="Int32" />
+    <Property Name="mag_id" Type="Int32" />
+    <Property Name="personnel_number_id" Type="Int32" />
+    <Property Name="AspNetUsersID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="employee1" Relationship="Self.FK__employee__chief___164452B1" FromRole="employee" ToRole="employee1" />
+    <NavigationProperty Name="employee2" Relationship="Self.FK__employee__chief___164452B1" FromRole="employee1" ToRole="employee" />
+    <NavigationProperty Name="employee11" Relationship="Self.FK__employee__mag_id__173876EA" FromRole="employee" ToRole="employee1" />
+    <NavigationProperty Name="employee3" Relationship="Self.FK__employee__mag_id__173876EA" FromRole="employee1" ToRole="employee" />
+    <NavigationProperty Name="tabel" Relationship="Self.FK__employee__person__182C9B23" FromRole="employee" ToRole="tabel" />
+    <NavigationProperty Name="POS" Relationship="Self.FK__employee__pos_id__15502E78" FromRole="employee" ToRole="POS" />
+    <NavigationProperty Name="position" Relationship="Self.FK__employee__positi__145C0A3F" FromRole="employee" ToRole="position" />
+    <NavigationProperty Name="GroupOSP" Relationship="Self.FK__GroupOSP__chief___1920BF5C" FromRole="employee" ToRole="GroupOSP" />
+    <NavigationProperty Name="POS1" Relationship="Self.FK__POS__chief_id__1BFD2C07" FromRole="employee" ToRole="POS" />
+    <NavigationProperty Name="report" Relationship="Self.FK__report__employee__20C1E124" FromRole="employee" ToRole="report" />
+  </EntityType>
+  <EntityType Name="GroupOSP">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="chief_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="employee" Relationship="Self.FK__GroupOSP__chief___1920BF5C" FromRole="GroupOSP" ToRole="employee" />
+    <NavigationProperty Name="POS" Relationship="Self.FK__POS__group_id__1B0907CE" FromRole="GroupOSP" ToRole="POS" />
+  </EntityType>
+  <EntityType Name="POS">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SKK_id" Type="Int32" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="group_id" Type="Int32" Nullable="false" />
+    <Property Name="chief_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="employee" Relationship="Self.FK__employee__pos_id__15502E78" FromRole="POS" ToRole="employee" />
+    <NavigationProperty Name="employee1" Relationship="Self.FK__POS__chief_id__1BFD2C07" FromRole="POS" ToRole="employee" />
+    <NavigationProperty Name="GroupOSP" Relationship="Self.FK__POS__group_id__1B0907CE" FromRole="POS" ToRole="GroupOSP" />
+    <NavigationProperty Name="SKK" Relationship="Self.FK__POS__SKK_id__1A14E395" FromRole="POS" ToRole="SKK" />
+    <NavigationProperty Name="report" Relationship="Self.FK__report__pos_id__22AA2996" FromRole="POS" ToRole="report" />
+  </EntityType>
+  <EntityType Name="position">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="employee" Relationship="Self.FK__employee__positi__145C0A3F" FromRole="position" ToRole="employee" />
+    <NavigationProperty Name="sales_channel_position" Relationship="Self.FK__sales_cha__posit__1DE57479" FromRole="position" ToRole="sales_channel_position" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_group_id" Type="Int32" Nullable="false" />
+    <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="short_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sortorder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="product_group" Relationship="Self.FK__product__product__1FCDBCEB" FromRole="product" ToRole="product_group" />
+    <NavigationProperty Name="report_detail" Relationship="Self.FK__report_de__produ__25869641" FromRole="product" ToRole="report_detail" />
+  </EntityType>
+  <EntityType Name="product_group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="short_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="group_weight" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="product" Relationship="Self.FK__product__product__1FCDBCEB" FromRole="product_group" ToRole="product" />
+  </EntityType>
+  <EntityType Name="report">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="employee_id" Type="Int32" Nullable="false" />
+    <Property Name="skk_id" Type="Int32" Nullable="false" />
+    <Property Name="pos_id" Type="Int32" Nullable="false" />
+    <Property Name="channel_id" Type="Int32" Nullable="false" />
+    <Property Name="report_sum" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="report_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LNR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="report_number" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="employee" Relationship="Self.FK__report__employee__20C1E124" FromRole="report" ToRole="employee" />
+    <NavigationProperty Name="POS" Relationship="Self.FK__report__pos_id__22AA2996" FromRole="report" ToRole="POS" />
+    <NavigationProperty Name="sales_channel" Relationship="Self.FK__report__channel___239E4DCF" FromRole="report" ToRole="sales_channel" />
+    <NavigationProperty Name="SKK" Relationship="Self.FK__report__skk_id__21B6055D" FromRole="report" ToRole="SKK" />
+    <NavigationProperty Name="report_detail" Relationship="Self.FK__report_de__repor__24927208" FromRole="report" ToRole="report_detail" />
+  </EntityType>
+  <EntityType Name="report_detail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="report_id" Type="Int32" Nullable="false" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="new_amt" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="new_sum" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="old_amt" Type="Int32" Nullable="false" />
+    <Property Name="old_sum" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="product" Relationship="Self.FK__report_de__produ__25869641" FromRole="report_detail" ToRole="product" />
+    <NavigationProperty Name="report" Relationship="Self.FK__report_de__repor__24927208" FromRole="report_detail" ToRole="report" />
+  </EntityType>
+  <EntityType Name="sales_channel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="short_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="report" Relationship="Self.FK__report__channel___239E4DCF" FromRole="sales_channel" ToRole="report" />
+    <NavigationProperty Name="sales_channel_position" Relationship="Self.FK__sales_cha__sales__1ED998B2" FromRole="sales_channel" ToRole="sales_channel_position" />
+  </EntityType>
+  <EntityType Name="sales_channel_position">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="position_id" Type="Int32" Nullable="false" />
+    <Property Name="sales_channel_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="position" Relationship="Self.FK__sales_cha__posit__1DE57479" FromRole="sales_channel_position" ToRole="position" />
+    <NavigationProperty Name="sales_channel" Relationship="Self.FK__sales_cha__sales__1ED998B2" FromRole="sales_channel_position" ToRole="sales_channel" />
+  </EntityType>
+  <EntityType Name="SKK">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="branch_id" Type="Int32" Nullable="false" />
+    <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="short_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="branch" Relationship="Self.FK__SKK__branch_id__1CF15040" FromRole="SKK" ToRole="branch" />
+    <NavigationProperty Name="POS" Relationship="Self.FK__POS__SKK_id__1A14E395" FromRole="SKK" ToRole="POS" />
+    <NavigationProperty Name="report" Relationship="Self.FK__report__skk_id__21B6055D" FromRole="SKK" ToRole="report" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tabel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="personnel_number" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pn_type" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="employee" Relationship="Self.FK__employee__person__182C9B23" FromRole="tabel" ToRole="employee" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SKK__branch_id__1CF15040">
+    <End Role="branch" Type="Self.branch" Multiplicity="1" />
+    <End Role="SKK" Type="Self.SKK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="branch">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SKK">
+        <PropertyRef Name="branch_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employee__chief___164452B1">
+    <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+    <End Role="employee1" Type="Self.employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employee1">
+        <PropertyRef Name="chief_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employee__mag_id__173876EA">
+    <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+    <End Role="employee1" Type="Self.employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employee1">
+        <PropertyRef Name="mag_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employee__person__182C9B23">
+    <End Role="tabel" Type="Self.tabel" Multiplicity="0..1" />
+    <End Role="employee" Type="Self.employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tabel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employee">
+        <PropertyRef Name="personnel_number_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employee__pos_id__15502E78">
+    <End Role="POS" Type="Self.POS" Multiplicity="0..1" />
+    <End Role="employee" Type="Self.employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POS">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employee">
+        <PropertyRef Name="pos_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employee__positi__145C0A3F">
+    <End Role="position" Type="Self.position" Multiplicity="1" />
+    <End Role="employee" Type="Self.employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="position">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employee">
+        <PropertyRef Name="position_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GroupOSP__chief___1920BF5C">
+    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="GroupOSP" Type="Self.GroupOSP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GroupOSP">
+        <PropertyRef Name="chief_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__POS__chief_id__1BFD2C07">
+    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="POS" Type="Self.POS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="POS">
+        <PropertyRef Name="chief_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__report__employee__20C1E124">
+    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="report" Type="Self.report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="report">
+        <PropertyRef Name="employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__POS__group_id__1B0907CE">
+    <End Role="GroupOSP" Type="Self.GroupOSP" Multiplicity="1" />
+    <End Role="POS" Type="Self.POS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupOSP">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="POS">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__POS__SKK_id__1A14E395">
+    <End Role="SKK" Type="Self.SKK" Multiplicity="1" />
+    <End Role="POS" Type="Self.POS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SKK">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="POS">
+        <PropertyRef Name="SKK_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__report__pos_id__22AA2996">
+    <End Role="POS" Type="Self.POS" Multiplicity="1" />
+    <End Role="report" Type="Self.report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POS">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="report">
+        <PropertyRef Name="pos_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sales_cha__posit__1DE57479">
+    <End Role="position" Type="Self.position" Multiplicity="1" />
+    <End Role="sales_channel_position" Type="Self.sales_channel_position" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="position">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sales_channel_position">
+        <PropertyRef Name="position_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product__product__1FCDBCEB">
+    <End Role="product_group" Type="Self.product_group" Multiplicity="1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product_group">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="product_group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__report_de__produ__25869641">
+    <End Role="product" Type="Self.product" Multiplicity="1" />
+    <End Role="report_detail" Type="Self.report_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="report_detail">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__report__channel___239E4DCF">
+    <End Role="sales_channel" Type="Self.sales_channel" Multiplicity="1" />
+    <End Role="report" Type="Self.report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sales_channel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="report">
+        <PropertyRef Name="channel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__report__skk_id__21B6055D">
+    <End Role="SKK" Type="Self.SKK" Multiplicity="1" />
+    <End Role="report" Type="Self.report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SKK">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="report">
+        <PropertyRef Name="skk_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__report_de__repor__24927208">
+    <End Role="report" Type="Self.report" Multiplicity="1" />
+    <End Role="report_detail" Type="Self.report_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="report">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="report_detail">
+        <PropertyRef Name="report_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sales_cha__sales__1ED998B2">
+    <End Role="sales_channel" Type="Self.sales_channel" Multiplicity="1" />
+    <End Role="sales_channel_position" Type="Self.sales_channel_position" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sales_channel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sales_channel_position">
+        <PropertyRef Name="sales_channel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="agatEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+    <EntitySet Name="branch" EntityType="Self.branch" />
+    <EntitySet Name="employee" EntityType="Self.employee" />
+    <EntitySet Name="GroupOSP" EntityType="Self.GroupOSP" />
+    <EntitySet Name="POS" EntityType="Self.POS" />
+    <EntitySet Name="position" EntityType="Self.position" />
+    <EntitySet Name="product" EntityType="Self.product" />
+    <EntitySet Name="product_group" EntityType="Self.product_group" />
+    <EntitySet Name="report" EntityType="Self.report" />
+    <EntitySet Name="report_detail" EntityType="Self.report_detail" />
+    <EntitySet Name="sales_channel" EntityType="Self.sales_channel" />
+    <EntitySet Name="sales_channel_position" EntityType="Self.sales_channel_position" />
+    <EntitySet Name="SKK" EntityType="Self.SKK" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tabel" EntityType="Self.tabel" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SKK__branch_id__1CF15040" Association="Self.FK__SKK__branch_id__1CF15040">
+      <End Role="branch" EntitySet="branch" />
+      <End Role="SKK" EntitySet="SKK" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employee__chief___164452B1" Association="Self.FK__employee__chief___164452B1">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="employee1" EntitySet="employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employee__mag_id__173876EA" Association="Self.FK__employee__mag_id__173876EA">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="employee1" EntitySet="employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employee__person__182C9B23" Association="Self.FK__employee__person__182C9B23">
+      <End Role="tabel" EntitySet="tabel" />
+      <End Role="employee" EntitySet="employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employee__pos_id__15502E78" Association="Self.FK__employee__pos_id__15502E78">
+      <End Role="POS" EntitySet="POS" />
+      <End Role="employee" EntitySet="employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employee__positi__145C0A3F" Association="Self.FK__employee__positi__145C0A3F">
+      <End Role="position" EntitySet="position" />
+      <End Role="employee" EntitySet="employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GroupOSP__chief___1920BF5C" Association="Self.FK__GroupOSP__chief___1920BF5C">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="GroupOSP" EntitySet="GroupOSP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__POS__chief_id__1BFD2C07" Association="Self.FK__POS__chief_id__1BFD2C07">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="POS" EntitySet="POS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__report__employee__20C1E124" Association="Self.FK__report__employee__20C1E124">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="report" EntitySet="report" />
+    </AssociationSet>
+    <AssociationSet Name="FK__POS__group_id__1B0907CE" Association="Self.FK__POS__group_id__1B0907CE">
+      <End Role="GroupOSP" EntitySet="GroupOSP" />
+      <End Role="POS" EntitySet="POS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__POS__SKK_id__1A14E395" Association="Self.FK__POS__SKK_id__1A14E395">
+      <End Role="SKK" EntitySet="SKK" />
+      <End Role="POS" EntitySet="POS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__report__pos_id__22AA2996" Association="Self.FK__report__pos_id__22AA2996">
+      <End Role="POS" EntitySet="POS" />
+      <End Role="report" EntitySet="report" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sales_cha__posit__1DE57479" Association="Self.FK__sales_cha__posit__1DE57479">
+      <End Role="position" EntitySet="position" />
+      <End Role="sales_channel_position" EntitySet="sales_channel_position" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product__product__1FCDBCEB" Association="Self.FK__product__product__1FCDBCEB">
+      <End Role="product_group" EntitySet="product_group" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__report_de__produ__25869641" Association="Self.FK__report_de__produ__25869641">
+      <End Role="product" EntitySet="product" />
+      <End Role="report_detail" EntitySet="report_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__report__channel___239E4DCF" Association="Self.FK__report__channel___239E4DCF">
+      <End Role="sales_channel" EntitySet="sales_channel" />
+      <End Role="report" EntitySet="report" />
+    </AssociationSet>
+    <AssociationSet Name="FK__report__skk_id__21B6055D" Association="Self.FK__report__skk_id__21B6055D">
+      <End Role="SKK" EntitySet="SKK" />
+      <End Role="report" EntitySet="report" />
+    </AssociationSet>
+    <AssociationSet Name="FK__report_de__repor__24927208" Association="Self.FK__report_de__repor__24927208">
+      <End Role="report" EntitySet="report" />
+      <End Role="report_detail" EntitySet="report_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sales_cha__sales__1ED998B2" Association="Self.FK__sales_cha__sales__1ED998B2">
+      <End Role="sales_channel" EntitySet="sales_channel" />
+      <End Role="sales_channel_position" EntitySet="sales_channel_position" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <FunctionImport Name="AddBranch">
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="ShortName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddEmployee">
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="MiddleName" Mode="In" Type="String" />
+      <Parameter Name="DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="DOD" Mode="In" Type="DateTime" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="PositionID" Mode="In" Type="Int32" />
+      <Parameter Name="Category" Mode="In" Type="Byte" />
+      <Parameter Name="POSID" Mode="In" Type="Int32" />
+      <Parameter Name="ChiefID" Mode="In" Type="Int32" />
+      <Parameter Name="MagID" Mode="In" Type="Int32" />
+      <Parameter Name="PersonnelNumber" Mode="In" Type="String" />
+      <Parameter Name="AspNetUserID" Mode="In" Type="String" />
+      <Parameter Name="PNID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddGroupOSP">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="chief_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddPOS">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="SKK_id" Mode="In" Type="Int32" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="group_id" Mode="In" Type="Int32" />
+      <Parameter Name="chief_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddPosition">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddProduct">
+      <Parameter Name="GroupID" Mode="In" Type="Int32" />
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="ShortName" Mode="In" Type="String" />
+      <Parameter Name="sortorder" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddProductGroup">
+      <Parameter Name="FP" Mode="In" Type="String" />
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="ShortName" Mode="In" Type="String" />
+      <Parameter Name="GroupWeight" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="AddSalesChannel">
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="ShortName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddSKK">
+      <Parameter Name="code" Mode="In" Type="Int32" />
+      <Parameter Name="BranchID" Mode="In" Type="Int32" />
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="ShortName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EditBranch">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="ShortName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EditEmployee">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="MiddleName" Mode="In" Type="String" />
+      <Parameter Name="DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="DOD" Mode="In" Type="DateTime" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="PositionID" Mode="In" Type="Int32" />
+      <Parameter Name="Category" Mode="In" Type="Byte" />
+      <Parameter Name="POSID" Mode="In" Type="Int32" />
+      <Parameter Name="ChiefID" Mode="In" Type="Int32" />
+      <Parameter Name="MagID" Mode="In" Type="Int32" />
+      <Parameter Name="PersonnelNumber" Mode="In" Type="String" />
+      <Parameter Name="AspNetUserID" Mode="In" Type="String" />
+      <Parameter Name="PNID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="EditGroupOSP">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="chief_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="EditPOS">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="SKK_id" Mode="In" Type="Int32" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="group_id" Mode="In" Type="Int32" />
+      <Parameter Name="chief_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="EditPosition">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EditProduct">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="GroupID" Mode="In" Type="Int32" />
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="ShortName" Mode="In" Type="String" />
+      <Parameter Name="sortorder" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="EditProductGroup">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="FP" Mode="In" Type="String" />
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="ShortName" Mode="In" Type="String" />
+      <Parameter Name="GroupWeight" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="EditSalesChannel">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="ShortName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EditSKK">
+      <Parameter Name="SKKID" Mode="In" Type="Int32" />
+      <Parameter Name="BranchID" Mode="In" Type="Int32" />
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="ShortName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(agatModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(agatModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

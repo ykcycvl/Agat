@@ -1,0 +1,38 @@
+﻿@model Agat.Models.SKKViewModel
+@{
+    ViewBag.Title = "СКК";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>СКК</h2>
+<div class="row">
+    <blockquote>
+        <p><small>Для редактирования СКК кликните по его полному либо краткому наименованию</small></p>
+        <p>@Html.ActionLink("Добавить", "AddSKK", "Unit", new { @class = "btn btn-default" })</p>
+    </blockquote>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                Код СКК
+            </th>
+            <th>
+                Полное наименование
+            </th>
+            <th>
+                Краткое наименование
+            </th>
+            <th>
+                Филиал
+            </th>
+        </tr>
+        @foreach (var SKK in Model.skks)
+        {
+            <tr>
+                <td>@SKK.id.ToString()</td>
+                <td>@Html.ActionLink(SKK.full_name, "EditSKK", new { @id = SKK.id })</td>
+                <td>@Html.ActionLink(SKK.short_name, "EditSKK", new { @id = SKK.id })</td>
+                <td>@SKK.branch.short_name</td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,43 @@
+﻿@model Agat.Models.ProductGroupViewModel
+
+@{
+    ViewBag.Title = "Группы продуктов";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Группы продуктов</h2>
+<div class="row">
+    <blockquote>
+        <p><small>Для редактирования группы продуктов кликните по ее полному либо краткому наименованию</small></p>
+        <p>@Html.ActionLink("Добавить", "AddProductGroup", "Reference", new { @class = "btn btn-default" })</p>
+    </blockquote>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                ФП
+            </th>
+            <th>
+                Полное наименование
+            </th>
+            <th>
+                Краткое наименование
+            </th>
+            <th>
+                Вес группы
+            </th>
+        </tr>
+        @foreach (var p in Model.product_groups)
+        {
+            <tr>
+                <td>@p.id.ToString()</td>
+                <td>@p.FP</td>
+                <td>@Html.ActionLink(p.full_name, "EditProductGroup", new { @id = p.id })</td>
+                <td>@Html.ActionLink(p.short_name, "EditProductGroup", new { @id = p.id })</td>
+                <td>@p.group_weight.ToString()</td>
+            </tr>
+        }
+    </table>
+</div>

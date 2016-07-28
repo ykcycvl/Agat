@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Подразделения";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Подразделения</h2>
+<div class="row">
+    <div class="col-md-8">
+        <dl class="dl-horizontal">
+            <dt>@Html.ActionLink("Филиалы", "Branch")</dt>
+            <dd><small>Просмотр, создание и редактирование филиалов</small></dd>
+            <dt>@Html.ActionLink("СКК", "SKK")</dt>
+            <dd><small>Просмотр, создание и редактирование СКК</small></dd>
+            <dt>@Html.ActionLink("Группы ОСП", "OSPGroup")</dt>
+            <dd><small>Просмотр, создание и редактирование групп ОСП</small></dd>
+            <dt>@Html.ActionLink("Точки продаж", "POS")</dt>
+            <dd><small>Просмотр, создание и редактирование точек продаж</small></dd>
+        </dl>
+    </div>
+</div>
+

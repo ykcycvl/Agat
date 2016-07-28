@@ -1,0 +1,50 @@
+﻿@model Agat.Models.POSViewModel
+@{
+    ViewBag.Title = "Точки продаж";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Точки продаж</h2>
+<div class="row">
+    <blockquote>
+        <p><small>Для редактирования точки продаж кликните по ее наименованию</small></p>
+        <p>@Html.ActionLink("Добавить", "AddPOS", "Unit", new { @class = "btn btn-default" })</p>
+    </blockquote>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Название т.п.
+            </th>
+            <th>
+                СКК
+            </th>
+            <th>
+                Адрес
+            </th>
+            <th>
+                Телефон
+            </th>
+            <th>
+                Группа ОСП
+            </th>
+            <th>
+                Руководитель
+            </th>
+        </tr>
+        @foreach (var pos in Model.poses)
+        {
+            <tr>
+                <td>@pos.id.ToString()</td>
+                <td>@Html.ActionLink(@pos.name, "EditPOS", new { @id = pos.id})</td>
+                <td>@pos.SKK.short_name</td>
+                <td>@pos.address</td>
+                <td>@pos.phone</td>
+                <td>@pos.GroupOSP.name</td>
+                <td>@pos.employee1.lastname @pos.employee1.firstname @pos.employee1.middlename</td>
+            </tr>
+        }
+    </table>
+</div>

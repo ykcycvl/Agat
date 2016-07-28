@@ -1,0 +1,35 @@
+﻿@model Agat.Models.SalesChannelViewModel
+
+@{
+    ViewBag.Title = "Каналы продаж";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Каналы продаж</h2>
+<div class="row">
+    <blockquote>
+        <p><small>Для редактирования канала продаж кликните по его названию</small></p>
+        <p>@Html.ActionLink("Добавить", "AddSalesChannel", "Reference", new { @class = "btn btn-default" })</p>
+    </blockquote>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Полное название
+            </th>
+            <th>
+                Краткое название
+            </th>
+        </tr>
+        @foreach (var s in Model.sales_channels)
+        {
+            <tr>
+                <td>@s.id.ToString()</td>
+                <td>@Html.ActionLink(s.full_name, "EditSalesChannel", new { @id = s.id })</td>
+                <td>@Html.ActionLink(s.short_name, "EditSalesChannel", new { @id = s.id })</td>
+            </tr>
+        }
+    </table>
+</div>

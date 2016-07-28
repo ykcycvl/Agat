@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="agatModelStoreContainer" CdmEntityContainer="agatEntities">
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="agatModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="agatModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="agatModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="agatModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="branch">
+      <EntityTypeMapping TypeName="agatModel.branch">
+        <MappingFragment StoreEntitySet="branch">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="short_name" ColumnName="short_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employee">
+      <EntityTypeMapping TypeName="agatModel.employee">
+        <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="middlename" ColumnName="middlename" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="DOD" ColumnName="DOD" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="position_id" ColumnName="position_id" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="pos_id" ColumnName="pos_id" />
+          <ScalarProperty Name="chief_id" ColumnName="chief_id" />
+          <ScalarProperty Name="mag_id" ColumnName="mag_id" />
+          <ScalarProperty Name="personnel_number_id" ColumnName="personnel_number_id" />
+          <ScalarProperty Name="AspNetUsersID" ColumnName="AspNetUsersID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupOSP">
+      <EntityTypeMapping TypeName="agatModel.GroupOSP">
+        <MappingFragment StoreEntitySet="GroupOSP">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="chief_id" ColumnName="chief_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POS">
+      <EntityTypeMapping TypeName="agatModel.POS">
+        <MappingFragment StoreEntitySet="POS">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="SKK_id" ColumnName="SKK_id" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="chief_id" ColumnName="chief_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="position">
+      <EntityTypeMapping TypeName="agatModel.position">
+        <MappingFragment StoreEntitySet="position">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product">
+      <EntityTypeMapping TypeName="agatModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="product_group_id" ColumnName="product_group_id" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="short_name" ColumnName="short_name" />
+          <ScalarProperty Name="sortorder" ColumnName="sortorder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_group">
+      <EntityTypeMapping TypeName="agatModel.product_group">
+        <MappingFragment StoreEntitySet="product_group">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FP" ColumnName="FP" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="short_name" ColumnName="short_name" />
+          <ScalarProperty Name="group_weight" ColumnName="group_weight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="report">
+      <EntityTypeMapping TypeName="agatModel.report">
+        <MappingFragment StoreEntitySet="report">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="skk_id" ColumnName="skk_id" />
+          <ScalarProperty Name="pos_id" ColumnName="pos_id" />
+          <ScalarProperty Name="channel_id" ColumnName="channel_id" />
+          <ScalarProperty Name="report_sum" ColumnName="report_sum" />
+          <ScalarProperty Name="report_date" ColumnName="report_date" />
+          <ScalarProperty Name="LNR" ColumnName="LNR" />
+          <ScalarProperty Name="report_number" ColumnName="report_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="report_detail">
+      <EntityTypeMapping TypeName="agatModel.report_detail">
+        <MappingFragment StoreEntitySet="report_detail">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="report_id" ColumnName="report_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="new_amt" ColumnName="new_amt" />
+          <ScalarProperty Name="new_sum" ColumnName="new_sum" />
+          <ScalarProperty Name="old_amt" ColumnName="old_amt" />
+          <ScalarProperty Name="old_sum" ColumnName="old_sum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sales_channel">
+      <EntityTypeMapping TypeName="agatModel.sales_channel">
+        <MappingFragment StoreEntitySet="sales_channel">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="short_name" ColumnName="short_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sales_channel_position">
+      <EntityTypeMapping TypeName="agatModel.sales_channel_position">
+        <MappingFragment StoreEntitySet="sales_channel_position">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="position_id" ColumnName="position_id" />
+          <ScalarProperty Name="sales_channel_id" ColumnName="sales_channel_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SKK">
+      <EntityTypeMapping TypeName="agatModel.SKK">
+        <MappingFragment StoreEntitySet="SKK">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="short_name" ColumnName="short_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="agatModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabel">
+      <EntityTypeMapping TypeName="agatModel.tabel">
+        <MappingFragment StoreEntitySet="tabel">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="personnel_number" ColumnName="personnel_number" />
+          <ScalarProperty Name="pn_type" ColumnName="pn_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="agatModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="AddBranch" FunctionName="agatModel.Store.AddBranch" />
+    <FunctionImportMapping FunctionImportName="AddEmployee" FunctionName="agatModel.Store.AddEmployee" />
+    <FunctionImportMapping FunctionImportName="AddGroupOSP" FunctionName="agatModel.Store.AddGroupOSP" />
+    <FunctionImportMapping FunctionImportName="AddPOS" FunctionName="agatModel.Store.AddPOS" />
+    <FunctionImportMapping FunctionImportName="AddPosition" FunctionName="agatModel.Store.AddPosition" />
+    <FunctionImportMapping FunctionImportName="AddProduct" FunctionName="agatModel.Store.AddProduct" />
+    <FunctionImportMapping FunctionImportName="AddProductGroup" FunctionName="agatModel.Store.AddProductGroup" />
+    <FunctionImportMapping FunctionImportName="AddSalesChannel" FunctionName="agatModel.Store.AddSalesChannel" />
+    <FunctionImportMapping FunctionImportName="AddSKK" FunctionName="agatModel.Store.AddSKK" />
+    <FunctionImportMapping FunctionImportName="EditBranch" FunctionName="agatModel.Store.EditBranch" />
+    <FunctionImportMapping FunctionImportName="EditEmployee" FunctionName="agatModel.Store.EditEmployee" />
+    <FunctionImportMapping FunctionImportName="EditGroupOSP" FunctionName="agatModel.Store.EditGroupOSP" />
+    <FunctionImportMapping FunctionImportName="EditPOS" FunctionName="agatModel.Store.EditPOS" />
+    <FunctionImportMapping FunctionImportName="EditPosition" FunctionName="agatModel.Store.EditPosition" />
+    <FunctionImportMapping FunctionImportName="EditProduct" FunctionName="agatModel.Store.EditProduct" />
+    <FunctionImportMapping FunctionImportName="EditProductGroup" FunctionName="agatModel.Store.EditProductGroup" />
+    <FunctionImportMapping FunctionImportName="EditSalesChannel" FunctionName="agatModel.Store.EditSalesChannel" />
+    <FunctionImportMapping FunctionImportName="EditSKK" FunctionName="agatModel.Store.EditSKK" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="agatModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="agatModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="agatModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="agatModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="agatModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="agatModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="agatModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="agatModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="agatModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

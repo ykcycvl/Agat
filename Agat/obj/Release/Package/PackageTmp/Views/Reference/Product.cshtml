@@ -1,0 +1,39 @@
+﻿@model Agat.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "Продукты";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Продукты</h2>
+<div class="row">
+    <blockquote>
+        <p><small>Для редактирования продукта кликните по его полному либо краткому наименованию</small></p>
+        <p>@Html.ActionLink("Добавить", "AddProduct", "Reference", new { @class = "btn btn-default" })</p>
+    </blockquote>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Полное наименование
+            </th>
+            <th>
+                Краткое наименование
+            </th>
+            <th>
+                Группа продукта
+            </th>
+        </tr>
+        @foreach (var p in Model.products)
+        {
+            <tr>
+                <td>@p.id.ToString()</td>
+                <td>@Html.ActionLink(p.full_name, "EditProduct", new { @id = p.id })</td>
+                <td>@Html.ActionLink(p.short_name, "EditProduct", new { @id = p.id })</td>
+                <td>@p.product_group.short_name</td>
+            </tr>
+        }
+    </table>
+</div>

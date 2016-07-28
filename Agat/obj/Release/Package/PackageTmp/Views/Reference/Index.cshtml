@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Справочники";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Справочники</h2>
+<div class="row">
+    <div class="col-md-8">
+        <dl class="dl-horizontal">
+            <dt>@Html.ActionLink("Продукты", "Product")</dt>
+            <dd><small>Просмотр, создание и редактирование продуктов</small></dd>
+            <dt>@Html.ActionLink("Группы продуктов", "ProductGroup")</dt>
+            <dd><small>Просмотр, создание и редактирование групп продуктов</small></dd>
+            <dt>@Html.ActionLink("Должности", "Position")</dt>
+            <dd><small>Просмотр, создание и редактирование должностей</small></dd>
+            <dt>@Html.ActionLink("Каналы продаж", "SalesChannel")</dt>
+            <dd><small>Просмотр, создание и редактирование каналов продаж</small></dd>
+        </dl>
+    </div>
+</div>

@@ -1,0 +1,747 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="agatModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="branch">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="full_name" Type="varchar" MaxLength="255" />
+    <Property Name="short_name" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lastname" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="firstname" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="middlename" Type="varchar" MaxLength="150" />
+    <Property Name="DOB" Type="datetime" />
+    <Property Name="DOD" Type="datetime" />
+    <Property Name="email" Type="varchar" MaxLength="150" />
+    <Property Name="position_id" Type="int" Nullable="false" />
+    <Property Name="category" Type="tinyint" Nullable="false" />
+    <Property Name="pos_id" Type="int" />
+    <Property Name="chief_id" Type="int" />
+    <Property Name="mag_id" Type="int" />
+    <Property Name="personnel_number_id" Type="int" />
+    <Property Name="AspNetUsersID" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="GroupOSP">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="chief_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="POS">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="SKK_id" Type="int" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="group_id" Type="int" Nullable="false" />
+    <Property Name="chief_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="position">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_group_id" Type="int" Nullable="false" />
+    <Property Name="full_name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="short_name" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="sortorder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="product_group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="full_name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="short_name" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="group_weight" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="report">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="employee_id" Type="int" Nullable="false" />
+    <Property Name="skk_id" Type="int" Nullable="false" />
+    <Property Name="pos_id" Type="int" Nullable="false" />
+    <Property Name="channel_id" Type="int" Nullable="false" />
+    <Property Name="report_sum" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="report_date" Type="datetime" Nullable="false" />
+    <Property Name="LNR" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="report_number" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="report_detail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="report_id" Type="int" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="new_amt" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="new_sum" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="old_amt" Type="int" Nullable="false" />
+    <Property Name="old_sum" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sales_channel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="full_name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="short_name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sales_channel_position">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="position_id" Type="int" Nullable="false" />
+    <Property Name="sales_channel_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SKK">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="branch_id" Type="int" Nullable="false" />
+    <Property Name="full_name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="short_name" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tabel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="personnel_number" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="pn_type" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__employee__chief___164452B1">
+    <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+    <End Role="employee1" Type="Self.employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employee1">
+        <PropertyRef Name="chief_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employee__mag_id__173876EA">
+    <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+    <End Role="employee1" Type="Self.employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employee1">
+        <PropertyRef Name="mag_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employee__person__182C9B23">
+    <End Role="tabel" Type="Self.tabel" Multiplicity="0..1" />
+    <End Role="employee" Type="Self.employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tabel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employee">
+        <PropertyRef Name="personnel_number_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employee__pos_id__15502E78">
+    <End Role="POS" Type="Self.POS" Multiplicity="0..1" />
+    <End Role="employee" Type="Self.employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POS">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employee">
+        <PropertyRef Name="pos_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employee__positi__145C0A3F">
+    <End Role="position" Type="Self.position" Multiplicity="1" />
+    <End Role="employee" Type="Self.employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="position">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employee">
+        <PropertyRef Name="position_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GroupOSP__chief___1920BF5C">
+    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="GroupOSP" Type="Self.GroupOSP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GroupOSP">
+        <PropertyRef Name="chief_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__POS__chief_id__1BFD2C07">
+    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="POS" Type="Self.POS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="POS">
+        <PropertyRef Name="chief_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__POS__group_id__1B0907CE">
+    <End Role="GroupOSP" Type="Self.GroupOSP" Multiplicity="1" />
+    <End Role="POS" Type="Self.POS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupOSP">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="POS">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__POS__SKK_id__1A14E395">
+    <End Role="SKK" Type="Self.SKK" Multiplicity="1" />
+    <End Role="POS" Type="Self.POS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SKK">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="POS">
+        <PropertyRef Name="SKK_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product__product__1FCDBCEB">
+    <End Role="product_group" Type="Self.product_group" Multiplicity="1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product_group">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="product_group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__report__channel___239E4DCF">
+    <End Role="sales_channel" Type="Self.sales_channel" Multiplicity="1" />
+    <End Role="report" Type="Self.report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sales_channel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="report">
+        <PropertyRef Name="channel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__report__employee__20C1E124">
+    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="report" Type="Self.report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="report">
+        <PropertyRef Name="employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__report__pos_id__22AA2996">
+    <End Role="POS" Type="Self.POS" Multiplicity="1" />
+    <End Role="report" Type="Self.report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POS">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="report">
+        <PropertyRef Name="pos_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__report__skk_id__21B6055D">
+    <End Role="SKK" Type="Self.SKK" Multiplicity="1" />
+    <End Role="report" Type="Self.report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SKK">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="report">
+        <PropertyRef Name="skk_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__report_de__produ__25869641">
+    <End Role="product" Type="Self.product" Multiplicity="1" />
+    <End Role="report_detail" Type="Self.report_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="report_detail">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__report_de__repor__24927208">
+    <End Role="report" Type="Self.report" Multiplicity="1" />
+    <End Role="report_detail" Type="Self.report_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="report">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="report_detail">
+        <PropertyRef Name="report_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sales_cha__posit__1DE57479">
+    <End Role="position" Type="Self.position" Multiplicity="1" />
+    <End Role="sales_channel_position" Type="Self.sales_channel_position" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="position">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sales_channel_position">
+        <PropertyRef Name="position_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sales_cha__sales__1ED998B2">
+    <End Role="sales_channel" Type="Self.sales_channel" Multiplicity="1" />
+    <End Role="sales_channel_position" Type="Self.sales_channel_position" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sales_channel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sales_channel_position">
+        <PropertyRef Name="sales_channel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SKK__branch_id__1CF15040">
+    <End Role="branch" Type="Self.branch" Multiplicity="1" />
+    <End Role="SKK" Type="Self.SKK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="branch">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SKK">
+        <PropertyRef Name="branch_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AddBranch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FullName" Type="varchar" Mode="In" />
+    <Parameter Name="ShortName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="AddEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+    <Parameter Name="DOB" Type="datetime" Mode="In" />
+    <Parameter Name="DOD" Type="datetime" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="PositionID" Type="int" Mode="In" />
+    <Parameter Name="Category" Type="tinyint" Mode="In" />
+    <Parameter Name="POSID" Type="int" Mode="In" />
+    <Parameter Name="ChiefID" Type="int" Mode="In" />
+    <Parameter Name="MagID" Type="int" Mode="In" />
+    <Parameter Name="PersonnelNumber" Type="varchar" Mode="In" />
+    <Parameter Name="AspNetUserID" Type="nvarchar" Mode="In" />
+    <Parameter Name="PNID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddGroupOSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="chief_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddPOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="SKK_id" Type="int" Mode="In" />
+    <Parameter Name="address" Type="varchar" Mode="In" />
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+    <Parameter Name="group_id" Type="int" Mode="In" />
+    <Parameter Name="chief_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddPosition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="AddProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GroupID" Type="int" Mode="In" />
+    <Parameter Name="FullName" Type="varchar" Mode="In" />
+    <Parameter Name="ShortName" Type="varchar" Mode="In" />
+    <Parameter Name="sortorder" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddProductGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FP" Type="varchar" Mode="In" />
+    <Parameter Name="FullName" Type="varchar" Mode="In" />
+    <Parameter Name="ShortName" Type="varchar" Mode="In" />
+    <Parameter Name="GroupWeight" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="AddSalesChannel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FullName" Type="varchar" Mode="In" />
+    <Parameter Name="ShortName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="AddSKK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="code" Type="int" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+    <Parameter Name="FullName" Type="varchar" Mode="In" />
+    <Parameter Name="ShortName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="EditBranch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="FullName" Type="varchar" Mode="In" />
+    <Parameter Name="ShortName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="EditEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+    <Parameter Name="DOB" Type="datetime" Mode="In" />
+    <Parameter Name="DOD" Type="datetime" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="PositionID" Type="int" Mode="In" />
+    <Parameter Name="Category" Type="tinyint" Mode="In" />
+    <Parameter Name="POSID" Type="int" Mode="In" />
+    <Parameter Name="ChiefID" Type="int" Mode="In" />
+    <Parameter Name="MagID" Type="int" Mode="In" />
+    <Parameter Name="PersonnelNumber" Type="varchar" Mode="In" />
+    <Parameter Name="AspNetUserID" Type="nvarchar" Mode="In" />
+    <Parameter Name="PNID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EditGroupOSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="chief_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EditPOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="SKK_id" Type="int" Mode="In" />
+    <Parameter Name="address" Type="varchar" Mode="In" />
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+    <Parameter Name="group_id" Type="int" Mode="In" />
+    <Parameter Name="chief_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EditPosition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="EditProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="GroupID" Type="int" Mode="In" />
+    <Parameter Name="FullName" Type="varchar" Mode="In" />
+    <Parameter Name="ShortName" Type="varchar" Mode="In" />
+    <Parameter Name="sortorder" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EditProductGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="FP" Type="varchar" Mode="In" />
+    <Parameter Name="FullName" Type="varchar" Mode="In" />
+    <Parameter Name="ShortName" Type="varchar" Mode="In" />
+    <Parameter Name="GroupWeight" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="EditSalesChannel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="FullName" Type="varchar" Mode="In" />
+    <Parameter Name="ShortName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="EditSKK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SKKID" Type="int" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+    <Parameter Name="FullName" Type="varchar" Mode="In" />
+    <Parameter Name="ShortName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="agatModelStoreContainer">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="branch" EntityType="Self.branch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GroupOSP" EntityType="Self.GroupOSP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="POS" EntityType="Self.POS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="position" EntityType="Self.position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product_group" EntityType="Self.product_group" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="report" EntityType="Self.report" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="report_detail" EntityType="Self.report_detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sales_channel" EntityType="Self.sales_channel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sales_channel_position" EntityType="Self.sales_channel_position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SKK" EntityType="Self.SKK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tabel" EntityType="Self.tabel" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__employee__chief___164452B1" Association="Self.FK__employee__chief___164452B1">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="employee1" EntitySet="employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employee__mag_id__173876EA" Association="Self.FK__employee__mag_id__173876EA">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="employee1" EntitySet="employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employee__person__182C9B23" Association="Self.FK__employee__person__182C9B23">
+      <End Role="tabel" EntitySet="tabel" />
+      <End Role="employee" EntitySet="employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employee__pos_id__15502E78" Association="Self.FK__employee__pos_id__15502E78">
+      <End Role="POS" EntitySet="POS" />
+      <End Role="employee" EntitySet="employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employee__positi__145C0A3F" Association="Self.FK__employee__positi__145C0A3F">
+      <End Role="position" EntitySet="position" />
+      <End Role="employee" EntitySet="employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GroupOSP__chief___1920BF5C" Association="Self.FK__GroupOSP__chief___1920BF5C">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="GroupOSP" EntitySet="GroupOSP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__POS__chief_id__1BFD2C07" Association="Self.FK__POS__chief_id__1BFD2C07">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="POS" EntitySet="POS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__POS__group_id__1B0907CE" Association="Self.FK__POS__group_id__1B0907CE">
+      <End Role="GroupOSP" EntitySet="GroupOSP" />
+      <End Role="POS" EntitySet="POS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__POS__SKK_id__1A14E395" Association="Self.FK__POS__SKK_id__1A14E395">
+      <End Role="SKK" EntitySet="SKK" />
+      <End Role="POS" EntitySet="POS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product__product__1FCDBCEB" Association="Self.FK__product__product__1FCDBCEB">
+      <End Role="product_group" EntitySet="product_group" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__report__channel___239E4DCF" Association="Self.FK__report__channel___239E4DCF">
+      <End Role="sales_channel" EntitySet="sales_channel" />
+      <End Role="report" EntitySet="report" />
+    </AssociationSet>
+    <AssociationSet Name="FK__report__employee__20C1E124" Association="Self.FK__report__employee__20C1E124">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="report" EntitySet="report" />
+    </AssociationSet>
+    <AssociationSet Name="FK__report__pos_id__22AA2996" Association="Self.FK__report__pos_id__22AA2996">
+      <End Role="POS" EntitySet="POS" />
+      <End Role="report" EntitySet="report" />
+    </AssociationSet>
+    <AssociationSet Name="FK__report__skk_id__21B6055D" Association="Self.FK__report__skk_id__21B6055D">
+      <End Role="SKK" EntitySet="SKK" />
+      <End Role="report" EntitySet="report" />
+    </AssociationSet>
+    <AssociationSet Name="FK__report_de__produ__25869641" Association="Self.FK__report_de__produ__25869641">
+      <End Role="product" EntitySet="product" />
+      <End Role="report_detail" EntitySet="report_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__report_de__repor__24927208" Association="Self.FK__report_de__repor__24927208">
+      <End Role="report" EntitySet="report" />
+      <End Role="report_detail" EntitySet="report_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sales_cha__posit__1DE57479" Association="Self.FK__sales_cha__posit__1DE57479">
+      <End Role="position" EntitySet="position" />
+      <End Role="sales_channel_position" EntitySet="sales_channel_position" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sales_cha__sales__1ED998B2" Association="Self.FK__sales_cha__sales__1ED998B2">
+      <End Role="sales_channel" EntitySet="sales_channel" />
+      <End Role="sales_channel_position" EntitySet="sales_channel_position" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SKK__branch_id__1CF15040" Association="Self.FK__SKK__branch_id__1CF15040">
+      <End Role="branch" EntitySet="branch" />
+      <End Role="SKK" EntitySet="SKK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

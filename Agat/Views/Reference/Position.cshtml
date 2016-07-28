@@ -1,0 +1,31 @@
+﻿@model Agat.Models.PositionViewModel
+
+@{
+    ViewBag.Title = "Должности";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Должности</h2>
+<div class="row">
+    <blockquote>
+        <p><small>Для редактирования должности кликните по ее названию</small></p>
+        <p>@Html.ActionLink("Добавить", "AddPosition", "Reference", new { @class = "btn btn-default" })</p>
+    </blockquote>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Название
+            </th>
+        </tr>
+        @foreach (var p in Model.positions)
+        {
+            <tr>
+                <td>@p.id.ToString()</td>
+                <td>@Html.ActionLink(p.name, "EditPosition", new { @id = p.id })</td>
+            </tr>
+        }
+    </table>
+</div>

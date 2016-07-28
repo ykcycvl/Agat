@@ -1,0 +1,42 @@
+﻿@model Agat.Models.ReportViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<div class="row">
+    <blockquote>
+        <p>@Html.ActionLink("Новый отчет", "Add", "Unit", new { @class = "btn btn-default" })</p>
+    </blockquote>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                Номер отчета
+            </th>
+            <th>
+                Сотрудник
+            </th>
+            <th>
+                Дата
+            </th>
+            <th>
+                Сумма
+            </th>
+            <th>
+                Точка продаж
+            </th>
+        </tr>
+        @foreach (var r in Model.reports)
+        {
+            <tr>
+                <td>@Html.ActionLink(r.SKK.id.ToString() + "-" + r.employee.tabel.personnel_number + "-" + @r.report_date.ToString("ddMMyy") + "/" + @r.report_number, "Edit", new { @id = r.id })</td>
+                <td>@r.employee.lastname @r.employee.firstname @r.employee.middlename</td>
+                <td>@r.report_date.ToShortDateString()</td>
+                <td>@r.report_sum</td>
+                <td>@r.POS.name</td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,48 @@
+﻿@model Agat.Models.EmployeeViewModel
+
+@{
+    ViewBag.Title = "Сотрудники";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Сотрудники</h2>
+<div class="row">
+    <blockquote>
+        <p><small>Для создания сотрудника без доступа в систему, нажмите кнопку "Новый сотрудник без доступа", если же сотрудник должен иметь доступ, то нажмите "Новый сотрудник с доступом"</small></p>
+        <p>@Html.ActionLink("Новый сотрудник без доступа", "Add", "Employee", new { @class = "btn btn-default" })</p>
+        <p>@Html.ActionLink("Новый сотрудник с доступом", "AddUser", "Employee", new { @class = "btn btn-default" })</p>
+    </blockquote>
+    <table class="table table-bordered">
+        <tr>
+            <th>Ф.И.О.</th>
+            <th>email</th>
+            <th>Руководитель</th>
+            <th>МАГ</th>
+            <th>Должность</th>
+        </tr>
+        @foreach (var e in Model.employees)
+        {
+            <tr>
+                <td>@Html.ActionLink(@e.lastname + " " + @e.firstname + " " + @e.middlename, "EditEmployee", new { @id = e.id })</td>
+                <td>@e.email</td>
+                @if (e.employee2 != null)
+                {
+                    <td>@e.employee2.lastname @e.employee2.firstname @e.employee2.middlename</td>
+                }
+                else
+                { 
+                    <td>-</td>
+                }
+                @if (e.employee3 != null)
+                {
+                    <td>@e.employee3.lastname @e.employee3.firstname @e.employee3.middlename</td>
+                }
+                else
+                {
+                    <td>-</td>
+                }
+                <td>@e.position.name</td>
+            </tr>
+        }
+    </table>
+</div>
